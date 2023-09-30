@@ -5,6 +5,8 @@ import Button from "../../../components/Button";
 import AuthHeader from "../../../components/AuthHeader";
 import Input from "../../../components/Input";
 import Checkbox from "../../../components/Checkbox";
+import Separator from "../../../components/Separator";
+import GoogleLogin from "../../../components/GoogleLogin";
 const Signup = () => {
   const [checked, setChecked] = useState(false);
 
@@ -14,9 +16,16 @@ const Signup = () => {
       <Input label="Name" placeholder="John Doe" />
       <Input label="Email" placeholder="example@gmail.com" />
       <Input isPassword label="Password" placeholder="**********" />
-      <View>
+      <View style={styles.agreeRow}>
         <Checkbox checked={checked} onCheck={setChecked} />
+        <Text style={styles.agreeText}>
+          I agree with <Text style={styles.agreeBold}>Terms </Text>&{" "}
+          <Text style={styles.agreeBold}>Privacy</Text>
+        </Text>
       </View>
+      <Button style={styles.button} title="Sign Up" />
+      <Separator text="Or sign up with" />
+      <GoogleLogin />
     </View>
   );
 };

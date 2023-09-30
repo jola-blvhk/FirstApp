@@ -15,11 +15,11 @@ export const styles = StyleSheet.create({
     // width: "100%",
   },
   checkbox: {
-    borderWidth: 1,
     backgroundColor: colors.grey,
     width: "100%",
     height: "100%",
     justifyContent: "center",
+    alignItems: "center",
 
     // color: colors.white,
     // textAlign: "center",
