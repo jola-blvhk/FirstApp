@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../utils/colors";
 export const styles = StyleSheet.create({
   container: {
-    marginBottom: 20,
+    marginBottom: 25,
   },
   label: {
     marginBottom: 8,
