@@ -7,10 +7,15 @@ import Signup from "./src/screens/auth/Signup";
 import React, { useEffect } from "react";
 import Button from "./src/components/Button";
 import SignIn from "./src/screens/auth/SignIn";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { colors } from "./src/utils/colors";
 // import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 const WEB_CLIENT_ID =
   "528682722951-uiu8cfnndqt51na9nh1dbmnir8cc1ts6.apps.googleusercontent.com";
+
+const Stack = createNativeStackNavigator();
 export default function App() {
   // useEffect(() => {
   //   GoogleSignin.configure({
@@ -33,11 +38,30 @@ export default function App() {
   //     "528682722951-uiu8cfnndqt51na9nh1dbmnir8cc1ts6.apps.googleusercontent.com",
   // });
 
+  const theme = {
+    colors: {
+      background: colors.white,
+    },
+  };
   return (
-    <SafeAreaView>
-      {/* <Splash /> */}
-
-      <SignIn />
-    </SafeAreaView>
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Signup"
+          component={Signup}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Signin"
+          component={SignIn}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

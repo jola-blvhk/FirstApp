@@ -7,13 +7,17 @@ import Input from "../../../components/Input";
 
 import Separator from "../../../components/Separator";
 import GoogleLogin from "../../../components/GoogleLogin";
-const SignIn = () => {
+
+const SignIn = ({ navigation }) => {
   const onSignUp = () => {
-    console.log("Sign up");
+    navigation.navigate("Signup");
+  };
+  const onBack = () => {
+    navigation.goBack();
   };
   return (
     <View style={styles.container}>
-      <AuthHeader title="Sign IN" />
+      <AuthHeader onBackPress={onBack} title="Sign In" />
 
       <Input label="Email" placeholder="example@gmail.com" />
       <Input isPassword label="Password" placeholder="**********" />
