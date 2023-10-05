@@ -1,7 +1,6 @@
 //web 528682722951-uiu8cfnndqt51na9nh1dbmnir8cc1ts6.apps.googleusercontent.com
 //android 528682722951-qmh2j2j3qv2avq3vd917tp88dc8sk2m7.apps.googleusercontent.com
 
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import Splash from "./src/screens/auth/Splash";
 import Signup from "./src/screens/auth/Signup";
 import React, { useEffect } from "react";
@@ -10,12 +9,58 @@ import SignIn from "./src/screens/auth/SignIn";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { colors } from "./src/utils/colors";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "./src/screens/app/Home";
+import Favorites from "./src/screens/app/Favorites";
+import Profile from "./src/screens/app/Profile";
+import { Image } from "react-native";
+
 // import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 const WEB_CLIENT_ID =
   "528682722951-uiu8cfnndqt51na9nh1dbmnir8cc1ts6.apps.googleusercontent.com";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const Tabs = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let icon;
+
+          if (route.name === "Home") {
+            icon = focused
+              ? require("./src/assets/tabs/home-active.png")
+              : require("./src/assets/tabs/home.png");
+          } else if (route.name === "Profile") {
+            icon = focused
+              ? require("./src/assets/tabs/profile-active.png")
+              : require("./src/assets/tabs/profile.png");
+          } else if (route.name === "Favorites") {
+            icon = focused
+              ? require("./src/assets/tabs/favorites-active.png")
+              : require("./src/assets/tabs/favorites.png");
+          }
+
+          // You can return any component that you like here!
+          return <Image style={{ width: 24, height: 24 }} source={icon} />;
+        },
+        tabBarShowLabel: false,
+        headerShown: false,
+        tabBarStyle: { borderTopColor: colors.lightGrey },
+      })}
+    >
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Favorites" component={Favorites} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
+  );
+};
+
+const isSignedIn = true;
 export default function App() {
   // useEffect(() => {
   //   GoogleSignin.configure({
@@ -44,24 +89,38 @@ export default function App() {
     },
   };
   return (
-    <NavigationContainer theme={theme}>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Splash"
-          component={Splash}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Signup"
-          component={Signup}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Signin"
-          component={SignIn}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer theme={theme}>
+        <Stack.Navigator>
+          {isSignedIn ? (
+            <>
+              <Stack.Screen
+                name="Tabs"
+                component={Tabs}
+                options={{ headerShown: false }}
+              />
+            </>
+          ) : (
+            <>
+              <Stack.Screen
+                name="Splash"
+                component={Splash}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Signup"
+                component={Signup}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Signin"
+                component={SignIn}
+                options={{ headerShown: false }}
+              />
+            </>
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
