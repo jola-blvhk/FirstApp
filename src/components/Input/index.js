@@ -6,7 +6,7 @@ const Input = ({ label, placeholder, isPassword }) => {
 
   const onEyePress = () => {
     setIsPasswordVisible(!isPasswordVisible);
-  }; 
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>

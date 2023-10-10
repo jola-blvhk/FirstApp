@@ -4,14 +4,17 @@ import { styles } from "./styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../../../components/Header";
 import { categories } from "../../../data/categories";
+import { products } from "../../../data/products";
+import CategoryBox from "../../../components/CategoryBox";
+import Bed from "../../../assets/categories/bed.png";
+import ProductHomeItem from "../../../components/ProductHomeItem";
 
 const Home = () => {
-  const renderCategoryItem = (item, index) => {
-    return (
-      <View onPress={() => console.log(item)}>
-        <Text>{item?.title}</Text>
-      </View>
-    );
+  const renderCategoryItem = ({ item }) => {
+    return <CategoryBox {...item} />;
+  };
+  const renderProductItem = ({ item, index }) => {
+    return <ProductHomeItem {...item} />;
   };
 
   return (
@@ -20,13 +23,20 @@ const Home = () => {
         <Header showSearch title="Find All You Need" />
 
         <FlatList
+          showsHorizontalScrollIndicator={false}
           style={styles.list}
+          horizontal
           data={categories}
           renderItem={renderCategoryItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => String(index)}
         />
 
-        <Text>Home</Text>
+        <FlatList
+          numColumns={2}
+          data={products}
+          renderItem={renderProductItem}
+          keyExtractor={(item) => String(item.id)}
+        />
       </View>
     </SafeAreaView>
   );
