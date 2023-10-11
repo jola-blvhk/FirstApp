@@ -8,7 +8,7 @@ const CategoryBox = ({ title, image, onPress, isFirst, isSelected }) => {
   return (
     <Pressable
       onPress={onPress}
-      style={[styles.container, isFirst ? { marginLeft: 24 } : {}]}
+      style={[styles.container, isFirst ? { marginLeft: 6 } : {}]}
     >
       <View
         style={[

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, ScrollView, Text, View } from "react-native";
 import { styles } from "./styles";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -11,6 +11,21 @@ import ProductHomeItem from "../../../components/ProductHomeItem";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState();
+  const [keyword, setKeyWord] = useState();
+  const [filteredProducts, setFilteredProducts] = useState(products);
+
+  console.log(keyword);
+  useEffect(() => {
+    if (selectedCategory) {
+      const updatedProducts = products.filter(
+        (product) => product?.category === selectedCategory
+      );
+      console.log(updatedProducts);
+      setFilteredProducts(updatedProducts);
+    } else {
+      setFilteredProducts(products);
+    }
+  }, [selectedCategory]);
   const renderCategoryItem = ({ item, index }) => {
     return (
       <CategoryBox
@@ -29,7 +44,12 @@ const Home = () => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Header showSearch title="Find All You Need" />
+        <Header
+          showSearch
+          onSearch={setKeyWord}
+          keyword={keyword}
+          title="Find All You Need"
+        />
 
         <FlatList
           showsHorizontalScrollIndicator={false}
@@ -43,10 +63,15 @@ const Home = () => {
         <FlatList
           style={styles.productsList}
           numColumns={2}
-          data={products}
+          data={filteredProducts}
           renderItem={renderProductItem}
           keyExtractor={(item) => String(item.id)}
-          ListFooterComponent={<View style={{ height: 300 }} />}
+          ListFooterComponent={
+            <View
+              style={{ height: 300 }}
+              showsVerticalScrollIndicator={false}
+            />
+          }
         />
       </View>
     </SafeAreaView>

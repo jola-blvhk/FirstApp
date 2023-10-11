@@ -2,6 +2,9 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../utils/colors";
 
 export const styles = StyleSheet.create({
+  mainContainer: {
+    marginBottom: 20,
+  },
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -14,7 +17,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     color: colors.black,
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
   },
   space: {
