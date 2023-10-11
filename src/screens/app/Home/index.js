@@ -14,18 +14,28 @@ const Home = () => {
   const [keyword, setKeyWord] = useState();
   const [filteredProducts, setFilteredProducts] = useState(products);
 
-  console.log(keyword);
   useEffect(() => {
-    if (selectedCategory) {
+    if (selectedCategory && !keyword) {
       const updatedProducts = products.filter(
         (product) => product?.category === selectedCategory
       );
-      console.log(updatedProducts);
       setFilteredProducts(updatedProducts);
-    } else {
+    } else if (selectedCategory && keyword) {
+      const updatedProducts = products.filter(
+        (product) =>
+          product?.category === selectedCategory &&
+          product?.title?.toLowerCase().includes(keyword?.toLowerCase())
+      );
+      setFilteredProducts(updatedProducts);
+    } else if (!selectedCategory && keyword) {
+      const updatedProducts = products.filter((product) =>
+        product?.title?.toLowerCase().includes(keyword?.toLowerCase())
+      );
+      setFilteredProducts(updatedProducts);
+    } else if (!keyword && !selectedCategory) {
       setFilteredProducts(products);
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, keyword]);
   const renderCategoryItem = ({ item, index }) => {
     return (
       <CategoryBox
@@ -66,12 +76,8 @@ const Home = () => {
           data={filteredProducts}
           renderItem={renderProductItem}
           keyExtractor={(item) => String(item.id)}
-          ListFooterComponent={
-            <View
-              style={{ height: 300 }}
-              showsVerticalScrollIndicator={false}
-            />
-          }
+          showsVerticalScrollIndicator={false}
+          ListFooterComponent={<View style={{ height: 400 }} />}
         />
       </View>
     </SafeAreaView>
