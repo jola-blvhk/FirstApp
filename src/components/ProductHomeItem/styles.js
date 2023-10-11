@@ -3,9 +3,12 @@ import { colors } from "../../utils/colors";
 
 const { width } = Dimensions.get("window");
 
+console.log("width :", width);
+
 export const styles = StyleSheet.create({
   container: {
     marginHorizontal: 8,
+
     // flexDirection: "column",
     // justifyContent: "center",
     // alignItems: "center",
@@ -14,8 +17,8 @@ export const styles = StyleSheet.create({
     color: colors.lightBlack,
   },
   image: {
-    width: 32,
-    height: 32,
+    width: (width - 80) / 2,
+    height: 220,
     borderRadius: 8,
   },
   title: {

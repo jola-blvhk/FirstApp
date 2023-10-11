@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FlatList, ScrollView, Text, View } from "react-native";
 import { styles } from "./styles";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -10,8 +10,17 @@ import Bed from "../../../assets/categories/bed.png";
 import ProductHomeItem from "../../../components/ProductHomeItem";
 
 const Home = () => {
-  const renderCategoryItem = ({ item }) => {
-    return <CategoryBox {...item} />;
+  const [selectedCategory, setSelectedCategory] = useState();
+  const renderCategoryItem = ({ item, index }) => {
+    return (
+      <CategoryBox
+        onPress={() => setSelectedCategory(item?.id)}
+        isSelected={item?.id === selectedCategory}
+        isFirst={index === 0}
+        title={item?.title}
+        image={item?.image}
+      />
+    );
   };
   const renderProductItem = ({ item, index }) => {
     return <ProductHomeItem {...item} />;
@@ -32,10 +41,12 @@ const Home = () => {
         />
 
         <FlatList
+          style={styles.productsList}
           numColumns={2}
           data={products}
           renderItem={renderProductItem}
           keyExtractor={(item) => String(item.id)}
+          ListFooterComponent={<View style={{ height: 300 }} />}
         />
       </View>
     </SafeAreaView>

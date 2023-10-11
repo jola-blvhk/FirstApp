@@ -7,32 +7,31 @@ import Bed from "../assets/categories/bed.png";
 
 export const categories = [
   {
-    id: 1,
     title: "Popular",
     image: Popular,
   },
   {
-    id: 2,
+    id: 1,
     title: "Chair",
     image: Chair,
   },
   {
-    id: 3,
+    id: 2,
     title: "Table",
     image: Table,
   },
   {
-    id: 4,
+    id: 3,
     title: "ArmChair",
     image: ArmChair,
   },
   {
-    id: 5,
+    id: 4,
     title: "Bed",
     image: Bed,
   },
   {
-    id: 6,
+    id: 5,
     title: "Lamp",
     image: Lamp,
   },
