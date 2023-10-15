@@ -14,6 +14,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./src/screens/app/Home";
 import Favorites from "./src/screens/app/Favorites";
 import Profile from "./src/screens/app/Profile";
+import ProductDetails from "./src/screens/app/ProductDetails";
 import { Image } from "react-native";
 
 // import { GoogleSignin } from "@react-native-google-signin/google-signin";
@@ -97,6 +98,11 @@ export default function App() {
               <Stack.Screen
                 name="Tabs"
                 component={Tabs}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="ProductDetails"
+                component={ProductDetails}
                 options={{ headerShown: false }}
               />
             </>

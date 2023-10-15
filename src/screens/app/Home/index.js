@@ -9,7 +9,7 @@ import CategoryBox from "../../../components/CategoryBox";
 import Bed from "../../../assets/categories/bed.png";
 import ProductHomeItem from "../../../components/ProductHomeItem";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [selectedCategory, setSelectedCategory] = useState();
   const [keyword, setKeyWord] = useState();
   const [filteredProducts, setFilteredProducts] = useState(products);
@@ -48,7 +48,10 @@ const Home = () => {
     );
   };
   const renderProductItem = ({ item, index }) => {
-    return <ProductHomeItem {...item} />;
+    const onProductPress = (product) => {
+      navigation.navigate("ProductDetails", { product });
+    };
+    return <ProductHomeItem onPress={() => onProductPress(item)} {...item} />;
   };
 
   return (

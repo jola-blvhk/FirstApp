@@ -34,4 +34,8 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 16,
   },
+  buttonContainer: {
+    flexDirection: "row",
+    width: "100%",
+  },
 });
