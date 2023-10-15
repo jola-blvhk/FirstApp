@@ -14,6 +14,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./src/screens/app/Home";
 import Favorites from "./src/screens/app/Favorites";
 import Profile from "./src/screens/app/Profile";
+import Settings from "./src/screens/app/Settings";
 import ProductDetails from "./src/screens/app/ProductDetails";
 import { Image } from "react-native";
 
@@ -29,13 +30,13 @@ const ProfileStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Tabs"
-        component={Tabs}
+        name="Profile"
+        component={Profile}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="ProductDetails"
-        component={ProductDetails}
+        name="Settings"
+        component={Settings}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
@@ -52,7 +53,7 @@ const Tabs = () => {
             icon = focused
               ? require("./src/assets/tabs/home-active.png")
               : require("./src/assets/tabs/home.png");
-          } else if (route.name === "Profile") {
+          } else if (route.name === "ProfileStack") {
             icon = focused
               ? require("./src/assets/tabs/profile-active.png")
               : require("./src/assets/tabs/profile.png");
@@ -72,7 +73,7 @@ const Tabs = () => {
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Favorites" component={Favorites} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="ProfileStack" component={ProfileStack} />
     </Tab.Navigator>
   );
 };

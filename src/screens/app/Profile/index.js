@@ -6,9 +6,12 @@ import Header from "../../../components/Header";
 import ListItem from "../../../components/ListItem";
 import Button from "../../../components/Button";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   const onLogOut = () => {};
   const num = 5;
+  const onSettingsPress = () => {
+    navigation.navigate("Settings");
+  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.header}>
@@ -21,7 +24,11 @@ const Profile = () => {
           <Text style={styles.email}>awujoolabello@gmail.com</Text>
 
           <ListItem title="My Listings" subtitle={`You have ${num} listings`} />
-          <ListItem title="Settings" subtitle={`Account, FAQ, Contact`} />
+          <ListItem
+            onPress={onSettingsPress}
+            title="Settings"
+            subtitle={`Account, FAQ, Contact`}
+          />
         </View>
 
         <Button style={{ flex: 0 }} title="Add New Listing" />
