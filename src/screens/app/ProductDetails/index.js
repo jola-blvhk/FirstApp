@@ -21,8 +21,13 @@ const ProductDetails = ({ navigation, route }) => {
   };
 
   const onContact = () => {
+    //make a phone call
     const phoneNumber = "+2348097098619";
     Linking.openURL(`tel:${phoneNumber}`);
+
+    // send an email
+    // const email = "oluremibello99@gmail.com";
+    // Linking.openURL(`mailto:${email}`);
   };
   return (
     <View style={styles.safe}>

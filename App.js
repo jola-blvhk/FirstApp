@@ -25,6 +25,22 @@ const WEB_CLIENT_ID =
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+const ProfileStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Tabs"
+        component={Tabs}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ProductDetails"
+        component={ProductDetails}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+};
 const Tabs = () => {
   return (
     <Tab.Navigator
