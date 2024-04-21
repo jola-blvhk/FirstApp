@@ -5,6 +5,10 @@ export const styles = StyleSheet.create({
   container: {
     padding: 24,
   },
+  header: {
+    paddingTop: 24,
+    paddingHorizontal: 24,
+  },
   item: {
     padding: 10,
     paddingHorizontal: 16,

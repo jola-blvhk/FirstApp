@@ -16,7 +16,9 @@ import Favorites from "./src/screens/app/Favorites";
 import Profile from "./src/screens/app/Profile";
 import Settings from "./src/screens/app/Settings";
 import ProductDetails from "./src/screens/app/ProductDetails";
+import CreateListing from "./src/screens/app/CreateListing";
 import { Image } from "react-native";
+import MyListings from "./src/screens/app/MyListings";
 
 // import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
@@ -37,6 +39,16 @@ const ProfileStack = () => {
       <Stack.Screen
         name="Settings"
         component={Settings}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CreateListing"
+        component={CreateListing}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MyListings"
+        component={MyListings}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

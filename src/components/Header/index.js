@@ -24,7 +24,7 @@ const Header = ({
         {showBack ? (
           <Pressable hitSlop={20} onPress={onBackPress}>
             <Image
-              source={require("../../assets/header-back.png")}
+              source={require("../../assets/back.png")}
               style={styles.icon}
             />
           </Pressable>

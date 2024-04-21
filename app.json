@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "FirstApp",
-    "slug": "FirstApp",
+    "slug": "first-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -29,8 +29,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "2419d29f-a343-4243-b318-71a2d44dda4c"
+        "projectId": "87f1590b-ccb5-4b4b-acfb-c7adaebc1437"
       }
-    }
+    },
+    "owner": "awujoola"
   }
 }

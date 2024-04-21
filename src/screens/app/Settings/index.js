@@ -31,9 +31,15 @@ const Settings = () => {
   const onItemPress = () => {
     Linking.openURL("https://www.google.com/");
   };
+  const goBack = () => {
+    navigation.goBack();
+  };
   return (
     <SafeAreaView>
-      <Header title="Settings" />
+      <View style={styles.header}>
+        <Header title="Settings" showBack={true} onBackPress={goBack} />
+      </View>
+
       <ScrollView style={styles.container}>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Personal Information</Text>
